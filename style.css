@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Calibri, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(180deg, #2d343b, #23282e);
+  overflow: hidden;
+}
+
+
+
+.chat-container {
+height: 80%;
+  padding: 24px;
+ padding-bottom: calc(clamp(90px, 12vh, 140px) + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow-y: auto;
+}
+
+
+
+.user-chat-box,
+.ai-chat-box {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ai-chat-box {
+  justify-content: flex-start;
+}
+
+.user-chat-box {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+
+
+.ai-chat-box img,
+.user-chat-box img {
+  width: 42px;
+  height: 42px;
+  margin-top: 8px;
+}
+
+
+
+.user-chat-area,
+.ai-chat-area {
+  max-width: 60%;
+  padding: 18px 22px;
+  border-radius: 28px;
+  color: white;
+  line-height: 1.5;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.user-chat-area {
+  background: #000;
+  border-radius: 28px 0 28px 28px;
+}
+
+.ai-chat-area {
+  background: rgba(0,0,0,0.45);
+  border-radius: 0 28px 28px 28px;
+}
+
+
+
+.ai-typing {
+  display: flex;
+  gap: 6px;
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+.ai-typing i {
+  animation: blink 1.4s infinite both;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+
+
+.prompt-area {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 14px;
+}
+
+
+.prompt-area input {
+  width: 50%;
+  height: 70px;
+  border-radius: 40px;
+  padding: 20px 24px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 18px;
+  outline: none;
+}
+
+.prompt-area input:focus {
+  background: white;
+  color: black;
+}
+
+
+
+#submit {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: black;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease;
+}
+
+#submit i {
+  font-size: 26px;
+  color: white;
+  transition: color 0.25s ease, transform 0.15s ease;
+}
+
+
+#submit:hover {
+  background: white;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.6),
+    0 12px 28px rgba(0,0,0,0.6);
+}
+
+#submit:hover i {
+  color: black;
+}
+
+/* CLICK */
+#submit:active {
+  transform: scale(0.92);
+}
+
+#submit:active i {
+  transform: translateY(-1px);
+}
+
+
+
+@media (max-width: 600px) {
+  .prompt-area input {
+    width: 65%;
+  }
+
+  .user-chat-area,
+  .ai-chat-area {
+    max-width: 85%;
+  }
+}
+
+.ai-typing-animate {
+  animation: typingFadeIn 0.35s ease-out both;
+}
+
+@keyframes typingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
